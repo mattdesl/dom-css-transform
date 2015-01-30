@@ -16,14 +16,14 @@ transform(div, 'translateX(25px) rotateX(25deg)')
 var matrix = [0.5, 0, 0, 0.25, 0, 0]
 transform(div, matrix)
 
-//results in matrix3d()
+//results in 3D "matrix3d()"
 transform(div, {
     scale: [x, y, z],
     translation: [x, y, z] 
     rotation: [x, y, z]
 })
 
-//results in matrix()
+//results in 2D "matrix()"
 transform(div, {
     rotation: [0, 0, -Math.PI],
     translation: [-15, 25],
