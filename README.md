@@ -5,8 +5,8 @@
 Applies a CSS `transform` to a DOM element's style, accepting a string, array matrix, or discrete components to be recomposed according to [W3C's animation spec](http://www.w3.org/TR/css3-transforms/#recomposing-to-a-3d-matrix). Also handles vendor prefixing. 
 
 ```js
-var mat4 = require('gl-mat4')
 var transform = require('dom-css-transform')
+
 var div = document.createElement('div')
 
 //typical string style
