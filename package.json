@@ -1,0 +1,57 @@
+{
+  "name": "dom-css-transform",
+  "version": "1.0.0",
+  "description": "transforms a DOM element by string, matrix or components",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "an-array": "^1.0.0",
+    "dom-css": "^1.0.6",
+    "gl-mat4": "^1.0.2",
+    "gl-vec3": "^1.0.2",
+    "mat4-css-stringify": "^1.0.1",
+    "mat4-recompose": "^1.0.3"
+  },
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "prefix-style": "^1.0.0",
+    "smokestack": "^3.2.0",
+    "tap-closer": "^1.0.0",
+    "tap-spec": "^2.2.0",
+    "tape": "^3.5.0"
+  },
+  "scripts": {
+    "test": "browserify test.js | tap-closer | smokestack | tap-spec"
+  },
+  "keywords": [
+    "css",
+    "transform",
+    "dom-style",
+    "dom-css",
+    "style",
+    "styling",
+    "3d",
+    "2d",
+    "scale",
+    "translate",
+    "translation",
+    "position",
+    "rotation",
+    "rotate",
+    "skew",
+    "perspective"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/dom-css-transform.git"
+  },
+  "homepage": "https://github.com/mattdesl/dom-css-transform",
+  "bugs": {
+    "url": "https://github.com/mattdesl/dom-css-transform/issues"
+  }
+}
