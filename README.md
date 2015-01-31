@@ -19,14 +19,14 @@ transform(div, matrix)
 //results in 3D "matrix3d()"
 transform(div, {
     scale: [x, y, z],
-    translation: [x, y, z] 
-    rotation: [x, y, z]
+    translate: [x, y, z] 
+    rotate: [x, y, z]
 })
 
 //results in 2D "matrix()"
 transform(div, {
-    rotation: [0, 0, -Math.PI],
-    translation: [-15, 25],
+    rotate: [0, 0, -Math.PI],
+    translate: [-15, 25],
     scale: [0.15, 0.5]
 })
 // result --> "matrix(-0.15, 0, 0, -0.5, -15, 25)"
@@ -49,16 +49,14 @@ Applies a CSS transform to the given DOM `element`, using the specified options.
 - an object with discrete components.
 - null or undefined, which leads to identity transform (i.e. `"none"`)
 
-When an object is specified, the components can be:
+When an object is specified, the reuslt is a 4x4 matrix composed by [css-mat4](https://github.com/mattdesl/css-mat4). Options:
 
-- `translation` an array of `[x, y]` or `[x, y, z]` in pixels
-- `rotation` an array of `[x, y, z]` in radians
+- `translate` an array of `[x, y]` or `[x, y, z]` in pixels
+- `rotate` an array of `[x, y, z]` in radians
 - `scale` an array of `[x, y]` or `[x, y, z]` (z component defaults to 1)
-- `skew` an array of `[x, y]` or `[x, y, z]`
-- `perspective` an array of `[x, y, z, w]`
+- `skew` an array of `[x, y]` in radians for a combined 2D skew matrix
+- `skewX`, `skewY` numbers in radians to mimic the independent CSS operations
 - `quaternion` can be specified if `rotation` is undefined; it's an array of `[x, y, z, w]` components
-
-The components are re-composed into a 4x4 matrix according to [mat4-recompose](https://www.npmjs.com/package/mat4-recompose).
 
 ## License
 

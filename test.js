@@ -29,24 +29,24 @@ test('composes a CSS transform matrix from components', function(t) {
     t.equal(compute(div), 'matrix(-1, 2, -2, -1, 25, 15)', 'mat2d with rotation translation')
 
     run(div, {
-        translation: [5, 10, 30]
+        translate: [5, 10, 30]
     })
     t.equal(compute(div), 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 5, 10, 30, 1)', 'obj with translation')
 
     run(div, {
-        rotation: [0, Math.PI/2, 0]
+        rotate: [0, Math.PI/2, 0]
     })
     t.equal(compute(div), 'matrix3d(0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1)', 'obj with rotation')
 
     run(div, {
         quaternion: [0, 0, 1, 1],
-        translation: [25, 15]
+        translate: [25, 15]
     })
     t.equal(compute(div), 'matrix(-1, 2, -2, -1, 25, 15)', 'mat3 with 2D quaternion rotation translation')
 
     run(div, {
         quaternion: [0, 0, 1, 1],
-        translation: [25, 15, -5]
+        translate: [25, 15, -5]
     })
     t.equal(compute(div), 'matrix3d(-1, 2, 0, 0, -2, -1, 0, 0, 0, 0, 1, 0, 25, 15, -5, 1)', 'adding Z will make matrix3d')
 
@@ -61,13 +61,13 @@ test('composes a CSS transform matrix from components', function(t) {
     t.equal(compute(div), 'matrix(-0.25, 0, 0, 0.5, 0, 0)', 'scale in 2d with 2 components')
 
     run(div, {
-        skew: [0.5, -1.0, 0.25],
+        skew: [0.25, -0.6],
     })
-    t.equal(compute(div), 'matrix3d(1, 0, 0, 0, 0.5, 1, 0, 0, -1, 0.25, 1, 0, 0, 0, 0, 1)', 'skew in 3d')
+    t.equal(compute(div), 'matrix(1, -0.684136808341692, 0.255341921221036, 1, 0, 0)', 'skew in 2d')
 
     run(div, {
-        rotation: [0, 0, -Math.PI],
-        translation: [-15, 25],
+        rotate: [0, 0, -Math.PI],
+        translate: [-15, 25],
         scale: [0.15, 0.5]
     })
     t.equal(compute(div), 'matrix(-0.15, 0, 0, -0.5, -15, 25)', 'transforms in 2d')
