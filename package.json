@@ -26,6 +26,7 @@
     "tap-closer": "^1.0.0",
     "tap-spec": "^2.2.0",
     "tape": "^3.5.0",
+    "tweenr": "^2.1.3",
     "wzrd": "^1.2.1"
   },
   "scripts": {

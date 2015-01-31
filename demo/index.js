@@ -1,43 +1,54 @@
 var transform = require('../')
 var css = require('dom-css')
-var mat4 = require('gl-mat4')
+var tweenr = require('tweenr')()
 
 require('domready')(function() {
+    var card = createCard()
+    document.body.appendChild(card.container)
+
+    //some properties to transform
+    var xform = {
+        translate: [20, 20],
+        rotate: [0, 0, 0]
+    }
+
+    //create a tween that updates the CSS every tick
+    tweenr.to(xform, {
+        duration: 2,
+        delay: 0.75,
+        rotate: [Math.PI/4, 0, Math.PI/4],
+        translate: [150, 100],
+        ease: 'expoOut'
+    }).on('update', update)
+
+    //set initial state
+    update()
+
+    function update() {
+        transform(card.child, xform)
+    }
+})
+
+function createCard() {
+    var container = document.createElement('div')
     var div = document.createElement('div')
-    css(div, {
+    container.appendChild(div)
+
+    css(container, {
         position: 'absolute',
         top: 0,
         left: 0,
+        transform: 'perspective(1000px)',
+        transformStyle: 'preserve-3d'
+    })
+    css(div, {
         width: 100,
         height: 100,
         background: 'blue'
     })
-    
-    var matrix = mat4.identity([])
-    mat4.translate(matrix, matrix, [0, 50, 0])
-    mat4.rotateX(matrix, matrix, -Math.PI/8)
-    mat4.rotateY(matrix, matrix, Math.PI/4)
-    mat4.rotateZ(matrix, matrix, -Math.PI/4)
 
-    // transform(div, {})
-
-
-    // transform(div, matrix)
-    // transform(div, 'translateY(50px) rotateX(-20deg) rotateY(35deg) rotateZ(-45deg)')
-    // transform(div, {
-    //     translation: [0, 50],
-    //     rotation: [-20 * Math.PI/180, 35*Math.PI/180, -45*Math.PI/180]
-    // })
-
-    document.body.appendChild(div)
-
-    // transform(div, 'skew(20deg, 30deg) skewX(20deg) skewY(30deg) translateZ(3px)')
-    transform(div, 'skewX(20deg) skewY(30deg) translateZ(3px)')
-    // transform(div, 'skew(20deg, 30deg) translateZ(3px)')
-    console.log(window.getComputedStyle(div,null).transform)
-
-    transform(div, { skew: [20*Math.PI/180, 30*Math.PI/180], translation:[0,0,3] })
-    console.log(window.getComputedStyle(div,null).transform)
-
-      
-})
+    return {
+        container: container,
+        child: div
+    }
+}
