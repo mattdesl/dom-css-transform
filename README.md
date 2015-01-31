@@ -2,7 +2,7 @@
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-Applies a CSS `transform` to a DOM element's style, accepting a string, array matrix, or discrete components to be recomposed according to [W3C's animation spec](http://www.w3.org/TR/css3-transforms/#recomposing-to-a-3d-matrix). Also handles vendor prefixing. 
+Applies a CSS `transform` to a DOM element's style, accepting a string, array matrix, or discrete components to be recomposed according to [CSS3 transform spec](http://www.w3.org/TR/css3-transforms). Also handles vendor prefixing. 
 
 ```js
 var transform = require('dom-css-transform')
@@ -55,7 +55,7 @@ When an object is specified, the reuslt is a 4x4 matrix composed by [css-mat4](h
 - `rotate` an array of `[x, y, z]` in radians
 - `scale` an array of `[x, y]` or `[x, y, z]` (z component defaults to 1)
 - `skew` an array of `[x, y]` in radians for a combined 2D skew matrix
-- `skewX`, `skewY` numbers in radians to mimic the independent CSS operations
+- `skewX`, `skewY` numbers in radians to mimic the independent CSS operations by the same name
 - `quaternion` can be specified if `rotation` is undefined; it's an array of `[x, y, z, w]` components
 
 ## License
