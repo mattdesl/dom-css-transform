@@ -2,7 +2,6 @@ var css = require('dom-css')
 var stringify = require('./lib/stringify')
 var isArray = require('an-array')
 
-var quat = require('./lib/quat')
 var mat4 = {
     copy: require('gl-mat4/copy'),
     identity: require('gl-mat4/identity')
@@ -10,6 +9,7 @@ var mat4 = {
 
 var recompose = require('mat4-recompose')
 var isArray = require('an-array')
+var eulerToQuaternion = require('./lib/euler-to-quat')
 
 var ZERO = [0, 0, 0]
 var ONES = [1, 1, 1]
@@ -49,18 +49,20 @@ function compose(out, opt) {
 
     if (!rotation) {
         //build a XYZ euler angle from 3D rotation
-        rotation = quat.identity(tmpQuat)
+        rotation = quatIdentity(tmpQuat)
         var euler = copyVec3(tmpRotation, opt.rotation || ZERO)
-
-        if (euler[0] !== 0) 
-            quat.rotateX(rotation, rotation, euler[0])
-        if (euler[1] !== 0)
-            quat.rotateY(rotation, rotation, euler[1])
-        if (euler[2] !== 0)
-            quat.rotateZ(rotation, rotation, euler[2])
+        eulerToQuaternion(rotation, euler)
     }
 
     return recompose(out, translation, scale, skew, perspective, rotation)
+}
+
+function quatIdentity(out) {
+    out[0] = 0
+    out[1] = 0
+    out[2] = 0
+    out[3] = 1
+    return out
 }
 
 //safely copy vec2/vec3 to a vec3
