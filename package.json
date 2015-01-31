@@ -1,6 +1,6 @@
 {
   "name": "dom-css-transform",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "transforms a DOM element by string, matrix or components",
   "main": "index.js",
   "license": "MIT",
