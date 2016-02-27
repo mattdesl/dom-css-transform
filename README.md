@@ -49,7 +49,7 @@ Applies a CSS transform to the given DOM `element`, using the specified options.
 - an object with discrete components.
 - null or undefined, which leads to identity transform (i.e. `"none"`)
 
-When an object is specified, the reuslt is a 4x4 matrix composed by [css-mat4](https://github.com/mattdesl/css-mat4). Options:
+When an object is specified, the result is a 4x4 matrix composed by [css-mat4](https://github.com/mattdesl/css-mat4). Options:
 
 - `translate` an array of `[x, y]` or `[x, y, z]` in pixels
 - `rotate` an array of `[x, y, z]` in radians
